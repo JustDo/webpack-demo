@@ -1,28 +1,13 @@
-import _ from 'lodash'
-import printMe from './print.js'
+
+import {cube} from './math.js'
 
 function component() {
-    var element = document.createElement('div');
-    var btn = document.createElement('button')
-
-
-    // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-
-    btn.innerHTML = 'click me and check the console';
-    btn.onclick = printMe;
-    element.appendChild(btn)
-
-
+    var element = document.createElement('pre');
+    element.innerHTML =[
+        'Hello webpack',
+        'S cubed is equal to ' + cube(5)
+    ].join('\n\n');
     return element;
 }
 
 document.body.appendChild(component());
-
-if(module.hot){
-    module.hot.accept('./print.js',function(){
-        console.log('Accetping the updated printMe module');
-        printMe();
-    })
-}
