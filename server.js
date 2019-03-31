@@ -7,18 +7,7 @@ const config = require('./webpack.config.js');
 const compiler = webpack(config);
 
 
-const options = {
-    contentBase: './dist',
-    hot: true,
-    host: 'localhost'
-}
 
-webpackDevServer.addDevServerEntrypoints(config, options);
-const server = new webpackDevServer(compiler, options);
-
-server.listen(5000,'localhost',()=>{
-    console.log('dev server listening on port5000');
-})
 
 app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath
